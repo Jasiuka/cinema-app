@@ -1,0 +1,112 @@
+<template>
+  <div>
+    <TheModal>
+      <component :is="AuthComponent"></component>
+    </TheModal>
+    <NuxtPage />
+  </div>
+</template>
+
+<script setup lang="ts">
+import { useModalStore } from "~/stores/modalStore.js";
+import { AuthComponent } from "#components";
+const modalStore = useModalStore();
+</script>
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+:root {
+  /* COLORS */
+  --cl-accent: #f05d5e;
+
+  /* PADDING */
+  --pd-smallest: clamp(0.5rem, 2dvw, 1rem);
+  --pd-small: clamp(1rem, 2dvw, 1.5rem);
+  --pd-medium: clamp(1.5rem, 2dvw, 2rem);
+  --pd-large: clamp(2rem, 2dvw, 2.5rem);
+  --pd-largest: clamp(2.5rem, 2dvw, 3rem);
+  /* SPACING */
+  --sp-smallest: clamp(0.2rem, 2dvw, 0.6rem);
+  --sp-small: clamp(0.6rem, 2dvw, 1.2rem);
+  --sp-medium: clamp(1.2rem, 2dvw, 1.8rem);
+  --sp-large: clamp(1.8rem, 2dvw, 2.4rem);
+  --sp-largest: clamp(2.4rem, 2dvw, 3rem);
+
+  /* FONT SIZE */
+  --fs-smallest: clamp(1rem, 3dvw, 1.2rem);
+  --fs-small: clamp(1.2rem, 3dvw, 1.8rem);
+  --fs-medium: clamp(1.8rem, 3dvw, 2.4rem);
+  --fs-large: clamp(2.4rem, 3dvw, 3rem);
+  --fs-largest: clamp(3rem, 3dvw, 3.6rem);
+
+  /* OTHER */
+  --border-radius: 6px;
+  --transition: all 0.4s ease;
+  --shadow: box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.1);
+  --max-width: 100rem;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+}
+
+a:link,
+a:visited,
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header-main {
+  position: absolute;
+}
+
+button {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+body {
+  font-family: "Montserrat", "Sans serif";
+  background-color: #272932;
+  color: #e7ecef;
+  overflow-x: hidden;
+  margin: 0;
+  font-size: var(--fs-smallest);
+  position: relative;
+}
+
+
+
+
+/* HELPER CLASSES */
+.pos-absolute {
+  position: absolute;
+}
+
+.pos-relative {
+  position: relative;
+}
+
+.pos-flex {
+  position: flex;
+}
+
+.pos-fixed {
+  position: fixed;
+}
+
+.border-radius {
+  border-radius: 6px;
+}
+</style>
