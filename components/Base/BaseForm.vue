@@ -3,19 +3,8 @@
     <h2>
       <slot name="form-heading"></slot>
     </h2>
-    <div
-      v-for="control in formInputs"
-      :key="control.name"
-      class="form__control"
-    >
-      <label class="form__label" :for="`${componentName}-${control.name}`">{{
-        control.label
-      }}</label>
-      <input
-        :name="control.name"
-        :id="`${componentName}-${control.name}`"
-        :type="control.type"
-      />
+    <div class="form__content">
+      <slot name="form-content"></slot>
     </div>
     <div class="form__content-extra">
       <slot name="content-extra"></slot>
@@ -36,12 +25,8 @@
   </form>
 </template>
 
-<script setup>
+<script setup lang="ts">
 defineProps({
-  formInputs: {
-    type: Array,
-    required: true,
-  },
   customClass: {
     type: String,
     required: false,
@@ -54,7 +39,7 @@ defineProps({
 </script>
 
 <style scoped>
-.form__label {
-  text-transform: capitalize;
+.form_content {
+  display: flex;
 }
 </style>

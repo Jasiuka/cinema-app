@@ -1,10 +1,7 @@
 export const ModalComponents = {};
 
 export type User = {
-  credentials: {
-    email: string;
-    password: string;
-  };
+  credentials: UserCredentials;
   userData: {
     firstName: string;
     lastName: string;
@@ -12,8 +9,7 @@ export type User = {
   };
 };
 
-export type InputObject = {
-  name: string;
-  type: string;
-  label: string;
+export type UserCredentials = {
+  email: string;
+  password: string;
 };

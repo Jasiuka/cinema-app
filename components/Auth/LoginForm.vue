@@ -1,5 +1,20 @@
 <template>
-  <BaseForm :form-inputs="loginInputs" component-name="login">
+  <BaseForm @submit.prevent="handleLogin" component-name="login">
+    <template #form-content>
+      <div class="form__control">
+        <label for="email">Email</label>
+        <input v-model="email" type="email" name="email" id="email" />
+      </div>
+      <div class="form__control">
+        <label for="password">Password</label>
+        <input
+          v-model="password"
+          type="password"
+          name="password"
+          id="password"
+        />
+      </div>
+    </template>
     <template #content-extra>
       <button type="button" role="button" @click="handleTabChange('forgot')">
         Forgot password
@@ -12,7 +27,8 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { login } from "#imports";
+const client = useSupabaseClient();
 
 defineProps({
   handleTabChange: {
@@ -23,15 +39,17 @@ defineProps({
 
 const email = ref("");
 const password = ref("");
-// const handleLogin = async function () {
-//   const response = await login({
-//     email: email.value,
-//     password: password.value,
-//   });
-// };
-
-const loginInputs = [
-  { name: "email", type: "email", label: "Email" },
-  { name: "password", type: "password", label: "Password" },
-];
+const handleLogin = async function () {
+  console.log({
+    email: email.value,
+    password: password.value,
+  });
+  const response = await login(
+    {
+      email: email.value,
+      password: password.value,
+    },
+    client
+  );
+};
 </script>

@@ -1,9 +1,31 @@
 <template>
-  <BaseForm
-    @submit.prevent="handleSignup($event)"
-    :form-inputs="signupInputs"
-    component-name="signup"
-  >
+  <BaseForm @submit.prevent="handleSignup($event)" component-name="signup">
+    <template #form-content>
+      <div class="form__control">
+        <label for="firstName">First name</label>
+        <input type="text" name="firstName" id="firstName" />
+      </div>
+      <div class="form__control">
+        <label for="lastName">Last name</label>
+        <input type="text" name="lastName" id="lastName" />
+      </div>
+      <div class="form__control">
+        <label for="birthdate">Birthdate</label>
+        <input type="date" name="birthdate" id="birthdate" />
+      </div>
+      <div class="form__control">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" />
+      </div>
+      <div class="form__control">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" />
+      </div>
+      <div class="form__control">
+        <label for="confirm">Confirm password</label>
+        <input type="password" name="confirm" id="confirm" />
+      </div>
+    </template>
     <template #submit>
       <button type="submit" role="button">Signup</button>
     </template>
@@ -11,21 +33,12 @@
 </template>
 
 <script setup lang="ts">
-import type { InputObject, User } from "../../types.ts";
+import type { User } from "../../types.ts";
+import { signup } from "#imports";
 
-import { signup } from "~/utils/signup.ts";
 const client = useSupabaseClient();
-const signupInputs: InputObject[] = [
-  { name: "firstName", type: "text", label: "First name" },
-  { name: "lastName", type: "text", label: "Last name" },
-  { name: "birthdate", type: "date", label: "Birth date" },
-  { name: "email", type: "email", label: "Email" },
-  { name: "password", type: "password", label: "Password" },
-  { name: "confirm", type: "password", label: "Confirm password" },
-];
-
-const handleSignup = async (event: FormEvent<HTMLFormElement>) => {
-  const form = event.target;
+const handleSignup = async (event: SubmitEvent) => {
+  const form = event.target as HTMLFormElement;
 
   const user: User = {
     credentials: {
