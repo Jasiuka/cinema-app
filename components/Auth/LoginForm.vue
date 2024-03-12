@@ -1,19 +1,8 @@
 <template>
   <BaseForm @submit.prevent="handleLogin" component-name="login">
     <template #form-content>
-      <div class="form__control">
-        <label for="email">Email</label>
-        <input v-model="email" type="email" name="email" id="email" />
-      </div>
-      <div class="form__control">
-        <label for="password">Password</label>
-        <input
-          v-model="password"
-          type="password"
-          name="password"
-          id="password"
-        />
-      </div>
+      <FormControl label="Email" name="email" type="email" />
+      <FormControl label="Password" name="password" type="password" />
     </template>
     <template #content-extra>
       <button type="button" role="button" @click="handleTabChange('forgot')">
@@ -21,13 +10,20 @@
       </button>
     </template>
     <template #submit>
-      <button type="submit" role="button">Login</button>
+      <Button
+        type="submit"
+        title="Login"
+        :button-style="ButtonStyle.REGULAR"
+        role="button"
+        >Login</Button
+      >
     </template>
   </BaseForm>
 </template>
 
 <script setup>
 import { login } from "#imports";
+import { ButtonStyle } from "~/types";
 const client = useSupabaseClient();
 
 defineProps({

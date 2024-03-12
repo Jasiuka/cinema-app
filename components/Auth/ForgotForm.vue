@@ -1,10 +1,7 @@
 <template>
-  <BaseForm :form-inputs="loginInputs" component-name="login">
+  <BaseForm component-name="login">
     <template #form-content>
-      <div class="form__control">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" />
-      </div>
+      <FormControl name="email" label="Email" type="email" />
     </template>
     <template #submit>
       <button type="submit" role="button">Send</button>

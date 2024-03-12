@@ -13,3 +13,8 @@ export type UserCredentials = {
   email: string;
   password: string;
 };
+
+export enum ButtonStyle {
+  REGULAR = "regular",
+  INVERTED = "inverted",
+}

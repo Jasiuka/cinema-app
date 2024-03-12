@@ -1,26 +1,25 @@
 <template>
   <form class="form" :class="customClass">
-    <h2>
-      <slot name="form-heading"></slot>
-    </h2>
-    <div class="form__content">
-      <slot name="form-content"></slot>
-    </div>
-    <div class="form__content-extra">
-      <slot name="content-extra"></slot>
-    </div>
-    <div class="form__actions">
-      <slot name="actions-extra"></slot>
-      <slot name="submit">
-        <button
-          class="form__submit-btn"
-          role="button"
-          title="Submit form"
-          type="submit"
-        >
-          Submit
-        </button>
-      </slot>
+    <div class="form__inner-box">
+      <div class="form__content">
+        <slot name="form-content"></slot>
+      </div>
+      <div class="form__content-extra">
+        <slot name="content-extra"></slot>
+      </div>
+      <div class="form__actions">
+        <slot name="actions-extra"></slot>
+        <slot name="submit">
+          <button
+            class="form__submit-btn"
+            role="button"
+            title="Submit form"
+            type="submit"
+          >
+            Submit
+          </button>
+        </slot>
+      </div>
     </div>
   </form>
 </template>
@@ -39,7 +38,12 @@ defineProps({
 </script>
 
 <style scoped>
-.form_content {
+.form__inner-box {
+}
+
+.form__content {
   display: flex;
+  flex-direction: column;
+  gap: var(--sp-medium);
 }
 </style>

@@ -1,39 +1,32 @@
 <template>
   <BaseForm @submit.prevent="handleSignup($event)" component-name="signup">
     <template #form-content>
-      <div class="form__control">
-        <label for="firstName">First name</label>
-        <input type="text" name="firstName" id="firstName" />
-      </div>
-      <div class="form__control">
-        <label for="lastName">Last name</label>
-        <input type="text" name="lastName" id="lastName" />
-      </div>
-      <div class="form__control">
-        <label for="birthdate">Birthdate</label>
-        <input type="date" name="birthdate" id="birthdate" />
-      </div>
-      <div class="form__control">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" />
-      </div>
-      <div class="form__control">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" />
-      </div>
-      <div class="form__control">
-        <label for="confirm">Confirm password</label>
-        <input type="password" name="confirm" id="confirm" />
-      </div>
+      <FormControl name="firstName" label="First Name" />
+      <FormControl name="lastName" label="Last Name" />
+      <FormControl
+        name="birthdate"
+        label="Birthdate"
+        :moved-label="true"
+        type="date"
+      />
+      <FormControl name="email" label="Email" type="email" />
+      <FormControl name="password" label="Password" type="password" />
+      <FormControl name="confirm" label="Confirm password" type="password" />
     </template>
     <template #submit>
-      <button type="submit" role="button">Signup</button>
+      <Button
+        type="submit"
+        title="Login"
+        :button-style="ButtonStyle.REGULAR"
+        role="button"
+        >Signup</Button
+      >
     </template>
   </BaseForm>
 </template>
 
 <script setup lang="ts">
-import type { User } from "../../types.ts";
+import { ButtonStyle, type User } from "~/types";
 import { signup } from "#imports";
 
 const client = useSupabaseClient();

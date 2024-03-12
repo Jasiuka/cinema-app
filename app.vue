@@ -18,13 +18,18 @@ const modalStore = useModalStore();
 :root {
   /* COLORS */
   --cl-accent: #f05d5e;
+  --cl-light: #f8f9fa;
+  --cl-dark: #212529;
+  --cl-black: black;
+  --cl-grey: #868e96;
+  --cl-white: white;
 
   /* PADDING */
-  --pd-smallest: clamp(0.5rem, 2dvw, 1rem);
-  --pd-small: clamp(1rem, 2dvw, 1.5rem);
-  --pd-medium: clamp(1.5rem, 2dvw, 2rem);
-  --pd-large: clamp(2rem, 2dvw, 2.5rem);
-  --pd-largest: clamp(2.5rem, 2dvw, 3rem);
+  --pd-smallest: clamp(0.2rem, 1dvw, 0.5rem);
+  --pd-small: clamp(0.5rem, 2dvw, 1rem);
+  --pd-medium: clamp(1rem, 2dvw, 1.5rem);
+  --pd-large: clamp(1.5rem, 2dvw, 2rem);
+  --pd-largest: clamp(2rem, 2dvw, 2.5rem);
   /* SPACING */
   --sp-smallest: clamp(0.2rem, 2dvw, 0.6rem);
   --sp-small: clamp(0.6rem, 2dvw, 1.2rem);
