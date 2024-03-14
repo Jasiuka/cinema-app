@@ -30,20 +30,22 @@ defineProps({
     type: String,
     required: false,
   },
-  componentName: {
-    type: String,
-    required: true,
-  },
 });
 </script>
 
 <style scoped>
-.form__inner-box {
+.form__actions {
+  margin-top: var(--sp-medium);
 }
 
 .form__content {
   display: flex;
   flex-direction: column;
   gap: var(--sp-medium);
+  margin-bottom: var(--sp-smallest);
+}
+
+.form__inner-box {
+  width: 70%;
 }
 </style>

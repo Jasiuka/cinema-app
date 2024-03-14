@@ -18,6 +18,7 @@ const modalStore = useModalStore();
 :root {
   /* COLORS */
   --cl-accent: #f05d5e;
+  --cl-accent-light: #ffc8c8;
   --cl-light: #f8f9fa;
   --cl-dark: #212529;
   --cl-black: black;
@@ -62,6 +63,7 @@ ul,
 ol {
   list-style: none;
   margin: 0;
+  padding: 0;
 }
 
 a:link,

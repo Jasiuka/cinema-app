@@ -17,4 +17,17 @@ export type UserCredentials = {
 export enum ButtonStyle {
   REGULAR = "regular",
   INVERTED = "inverted",
+  LINK = "link",
 }
+
+export type InputEmit = {
+  value: string;
+  inputName: string;
+};
+
+export type DropdownList = DropdownItem[];
+
+export type DropdownItem = {
+  text: string;
+  link: string;
+};

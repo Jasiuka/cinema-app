@@ -3,7 +3,6 @@ import type { User, UserCredentials } from "~/types";
 
 export async function signup(user: User, client: SupabaseClient) {
   try {
-    // First create account
     const { data, error } = await client.auth.signUp({
       email: user.credentials.email,
       password: user.credentials.password,
@@ -27,7 +26,7 @@ export async function login(
     if (!data.user) {
       return;
     }
-    console.log(data);
+    return data;
   } catch (error) {}
 }
 

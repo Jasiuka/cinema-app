@@ -17,10 +17,18 @@
       <li class="navigation__item">
         <NuxtLink to="/" class="navigation__link">Link</NuxtLink>
       </li>
-      <li>
+      <li v-if="!user">
         <button class="naivgation__button" @click="openModal('AuthComponent')">
           Login
         </button>
+      </li>
+      <li v-else>
+        <BaseDropdown>
+          <template #display></template>
+          <template #list-items>
+            <li v-for="item in items"></li>
+          </template>
+        </BaseDropdown>
       </li>
     </ul>
   </nav>
@@ -28,7 +36,14 @@
 
 <script setup lang="ts">
 import { useModalStore } from "../../stores/modalStore";
+import { useAuthStore } from "#imports";
 const { openModal } = useModalStore();
+const { user } = storeToRefs(useAuthStore());
+
+const items = [
+  { text: "Settings", link: "/settings" },
+  { text: "Logout", link: "/logout" },
+];
 </script>
 
 <style scoped>

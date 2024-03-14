@@ -1,5 +1,5 @@
 <template>
-  <BaseForm @submit.prevent="handleSignup($event)" component-name="signup">
+  <BaseForm @submit.prevent="handleSignup($event)">
     <template #form-content>
       <FormControl name="firstName" label="First Name" />
       <FormControl name="lastName" label="Last Name" />

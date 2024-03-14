@@ -50,6 +50,15 @@ function handleTabChange(tab) {
   font-size: var(--fs-small);
   transition: all 0.3s ease;
   padding: calc(var(--pd-smallest) - 0.4rem) var(--pd-smallest);
+  border: 2px solid var(--cl-accent);
+}
+
+.auth-component__tabs > button:first-of-type {
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.auth-component__tabs > button:nth-of-type(2) {
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
 
 .auth-component__tabs > button.active {
@@ -57,9 +66,15 @@ function handleTabChange(tab) {
   color: var(--cl-light);
 }
 
+.auth-component__tabs > button:not(.active):hover {
+  background-color: var(--cl-accent-light);
+  border-color: var(--cl-accent-light);
+}
+
 .auth-component {
-  min-height: 40dvh;
-  min-width: 20dvw;
+  min-height: 35rem;
+  min-width: 25rem;
+  max-width: 25rem;
   display: flex;
   flex-direction: column;
 }

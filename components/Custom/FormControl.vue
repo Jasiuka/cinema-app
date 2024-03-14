@@ -8,7 +8,8 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
+import type { InputEmit } from "~/types";
+const props = defineProps({
   label: {
     type: String,
     required: true,
@@ -30,6 +31,12 @@ defineProps({
 });
 
 const inputVal = ref("");
+
+const emit = defineEmits(["inputChange"]);
+
+watch(inputVal, (newVal) => {
+  emit("inputChange", { value: newVal, inputName: props.name } as InputEmit);
+});
 </script>
 
 <style scoped>

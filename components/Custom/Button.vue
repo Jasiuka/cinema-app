@@ -39,6 +39,8 @@ const btnStyle = computed(() => {
       return "regular";
     case ButtonStyle.INVERTED:
       return "inverted";
+    case ButtonStyle.LINK:
+      return "link";
     default:
       return "regular";
   }
@@ -62,6 +64,18 @@ button.regular {
 button.regular:hover {
   background-color: transparent;
   border-color: var(--cl-accent);
+  color: var(--cl-dark);
+}
+
+button.link {
+  font-size: calc(var(--fs-smallest) - 0.2rem);
+  border-radius: 0;
+  background-color: transparent;
+  color: #4dabf7;
+  transition: var(--transition);
+}
+
+button.link:hover {
   color: var(--cl-dark);
 }
 </style>
