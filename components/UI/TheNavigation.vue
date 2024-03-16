@@ -24,9 +24,20 @@
       </li>
       <li v-else>
         <BaseDropdown>
-          <template #display></template>
+          <template #display>
+            <Icon size="1.5rem" name="material-symbols:person" />
+            {{ user }}
+          </template>
           <template #list-items>
-            <li v-for="item in items"></li>
+            <li v-for="item in items">
+              <NuxtLink v-if="item.type === 'link'" :to="item.link">{{
+                item.text
+              }}</NuxtLink>
+              <button v-else>{{ item.text }}</button>
+            </li>
+            <li>
+              <button @click="handleLogout">Logout</button>
+            </li>
           </template>
         </BaseDropdown>
       </li>
@@ -37,12 +48,21 @@
 <script setup lang="ts">
 import { useModalStore } from "../../stores/modalStore";
 import { useAuthStore } from "#imports";
+import { logout } from "#imports";
+import type { DropdownList } from "~/types";
 const { openModal } = useModalStore();
+const { setUser } = useAuthStore();
 const { user } = storeToRefs(useAuthStore());
+const client = useSupabaseClient();
 
-const items = [
-  { text: "Settings", link: "/settings" },
-  { text: "Logout", link: "/logout" },
+const handleLogout = async () => {
+  await logout(client);
+  setUser("");
+};
+
+const items: DropdownList = [
+  { text: "Settings", link: "/settings", type: "link" },
+  { text: "History", link: "/history", type: "link" },
 ];
 </script>
 

@@ -30,4 +30,5 @@ export type DropdownList = DropdownItem[];
 export type DropdownItem = {
   text: string;
   link: string;
+  type: string;
 };

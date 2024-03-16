@@ -34,3 +34,10 @@ export async function forgotPassword(email: string, client: SupabaseClient) {
   try {
   } catch (error) {}
 }
+
+export async function logout(client: SupabaseClient) {
+  try {
+    const { error } = await client.auth.signOut();
+    console.log("Logged out successfuly");
+  } catch (error) {}
+}

@@ -25,8 +25,14 @@ defineProps({
 
 <style scoped>
 .dropdown:hover > .dropdown__list {
-  min-height: 10rem;
+  min-height: 5rem;
   opacity: 1;
+}
+
+.dropdown__btn {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-smallest);
 }
 
 .dropdown {
@@ -36,12 +42,14 @@ defineProps({
 .dropdown__list {
   position: absolute;
   height: 0;
-  background-color: black;
+  background-color: var(--cl-light);
   overflow: hidden;
   opacity: 0;
   transition: var(--transition);
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding: var(--pd-small);
+  border-radius: var(--border-radius);
 }
 </style>
