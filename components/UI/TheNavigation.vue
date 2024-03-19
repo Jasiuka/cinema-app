@@ -18,7 +18,10 @@
         <NuxtLink to="/" class="navigation__link">Link</NuxtLink>
       </li>
       <li v-if="!user">
-        <button class="naivgation__button" @click="openModal('AuthComponent')">
+        <button
+          class="naivgation__button"
+          @click="openModal(ModalComponents.AUTH)"
+        >
           Login
         </button>
       </li>
@@ -55,7 +58,7 @@
 import { useModalStore } from "../../stores/modalStore";
 import { useAuthStore } from "#imports";
 import { logout } from "#imports";
-import { ButtonStyle, type DropdownList } from "~/types";
+import { ButtonStyle, ModalComponents, type DropdownList } from "~/types";
 const { openModal } = useModalStore();
 const { setUser } = useAuthStore();
 const { user } = storeToRefs(useAuthStore());

@@ -1,5 +1,3 @@
-export const ModalComponents = {};
-
 export type User = {
   credentials: UserCredentials;
   userData: {
@@ -33,3 +31,8 @@ export type DropdownItem = {
   link: string;
   type: string;
 };
+
+export enum ModalComponents {
+  AUTH = "auth",
+  DELETE_ACCOUNT = "delete-account",
+}

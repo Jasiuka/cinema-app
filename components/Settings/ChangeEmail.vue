@@ -1,60 +1,46 @@
 <template>
-  <div class="settings__control">
-    <h3 class="settings__control-heading">Email address</h3>
-    <div class="settings__control-content">
+  <SettingsControlBase>
+    <template #heading>
+      <h3>Email address</h3>
+    </template>
+    <template #content>
       <p>
         Your email address is
         <span class="bold">
           {{ email }}
         </span>
       </p>
-      <button @click="handleOpenClick">{{ open ? "Hide" : "Change" }}</button>
-      <div
-        class="settings__control-hidden-content"
-        :class="{
-          open: open,
-        }"
-      >
-        <BaseForm>
-          <template #form-content>
-            <FormControl
-              label="New email address"
-              type="email"
-              name="new-email"
-            />
-          </template>
-          <template #submit></template>
-        </BaseForm>
-      </div>
-    </div>
-  </div>
+    </template>
+    <template #content-hidden>
+      <BaseForm :in-row="true">
+        <template #form-content>
+          <FormControl
+            label="New email address"
+            type="email"
+            name="new-email"
+          />
+        </template>
+        <template #submit>
+          <Button
+            :button-style="ButtonStyle.REGULAR"
+            title="Change email"
+            type="submit"
+            >Change</Button
+          >
+        </template>
+      </BaseForm>
+    </template>
+  </SettingsControlBase>
 </template>
 
 <script setup lang="ts">
-const open = ref(false);
+import { ButtonStyle } from "~/types";
 defineProps({
   email: {
     type: String,
     required: true,
   },
 });
-
-const handleOpenClick = () => {
-  open.value = !open.value;
-};
 </script>
 
-<style scoped>
-.settings__control {
-}
-
-.settings__control-hidden-content {
-  max-height: 0;
-  overflow: hidden;
-}
-
-.settings__control-hidden-content.open {
-  min-height: 2rem;
-  max-height: 20rem;
-}
-</style>
+<style></style>

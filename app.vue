@@ -1,7 +1,7 @@
 <template>
   <div>
     <TheModal>
-      <component :is="AuthComponent"></component>
+      <component :is="modalComponent"></component>
     </TheModal>
     <NuxtPage />
   </div>
@@ -9,8 +9,19 @@
 
 <script setup lang="ts">
 import { useModalStore } from "~/stores/modalStore.js";
-import { AuthComponent } from "#components";
+import { AuthComponent, DeleteAccountForm } from "#components";
+import { ModalComponents } from "./types";
 const modalStore = useModalStore();
+const modalComponent = computed(() => {
+  switch (modalStore.modalComponent) {
+    case ModalComponents.AUTH:
+      return AuthComponent;
+    case ModalComponents.DELETE_ACCOUNT:
+      return DeleteAccountForm;
+    default:
+      return AuthComponent;
+  }
+});
 </script>
 
 <style>

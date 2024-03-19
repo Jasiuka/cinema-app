@@ -1,22 +1,38 @@
 <template>
-  <div class="settings__control">
-    <h3 class="settings__control-heading">Password</h3>
-    <div class="settings__control-content">
-      <button @click="handleOpenClick">{{ open ? "Hide" : "Change" }}</button>
-      <div
-        class="settings__control-hidden-content"
-        :class="{
-          open: open,
-        }"
-      >
-        <h1>Some hidden content</h1>
-        <h1>Some hidden content</h1>
-      </div>
-    </div>
-  </div>
+  <SettingsControlBase>
+    <template #heading>
+      <h3 class="settings__control-heading">Password</h3>
+    </template>
+    <template #content> </template>
+    <template #content-hidden>
+      <BaseForm :in-row="true">
+        <template #form-content>
+          <FormControl
+            label="New password"
+            type="password"
+            name="new-password"
+          />
+          <FormControl
+            label="Current password"
+            type="password"
+            name="new-password-confirm"
+          />
+        </template>
+        <template #submit>
+          <Button
+            :button-style="ButtonStyle.REGULAR"
+            title="Change email"
+            type="submit"
+            >Change</Button
+          >
+        </template>
+      </BaseForm>
+    </template>
+  </SettingsControlBase>
 </template>
 
 <script setup lang="ts">
+import { ButtonStyle } from "~/types";
 const open = ref(false);
 
 const handleOpenClick = () => {
