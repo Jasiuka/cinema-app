@@ -14,7 +14,7 @@ defineProps({
 
 <style scoped>
 .loader {
-  width: 50px;
+  width: 20px;
   aspect-ratio: 1;
   display: grid;
   -webkit-mask: conic-gradient(from 15deg, #0000, #000);

@@ -25,8 +25,9 @@ defineProps({
 
 <style scoped>
 .dropdown:hover > .dropdown__list {
-  min-height: 5rem;
   opacity: 1;
+  visibility: visible;
+  pointer-events: all;
 }
 
 .dropdown__btn {
@@ -41,7 +42,6 @@ defineProps({
 
 .dropdown__list {
   position: absolute;
-  height: 0;
   background-color: var(--cl-light);
   overflow: hidden;
   opacity: 0;
@@ -49,7 +49,28 @@ defineProps({
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: var(--pd-small);
   border-radius: var(--border-radius);
+  color: var(--cl-dark);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+:deep(.dropdown__item) {
+  transition: var(--transition);
+  display: block;
+}
+
+:deep(.dropdown__item) > * {
+  padding: var(--pd-small);
+  display: block;
+  text-align: center;
+}
+
+:deep(.dropdown__item) > button {
+  min-width: 100%;
+}
+
+:deep(.dropdown__item):hover {
+  background-color: var(--cl-accent);
 }
 </style>

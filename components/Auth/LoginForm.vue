@@ -32,8 +32,10 @@
         title="Login"
         :button-style="ButtonStyle.REGULAR"
         role="button"
-        >Login</Button
-      >
+        :disabled="loading"
+        >Login
+        <TheLoader v-if="loading" />
+      </Button>
     </template>
   </BaseForm>
 </template>
@@ -44,6 +46,8 @@ import { ButtonStyle, type InputEmit } from "~/types";
 
 const { setUser } = useAuthStore();
 const client = useSupabaseClient();
+const { closeModal } = useModalStore();
+const loading = ref(false);
 
 defineProps({
   handleTabChange: {
@@ -67,10 +71,7 @@ const handleInputChange = (input: InputEmit) => {
 const email = ref("");
 const password = ref("");
 const handleLogin = async function () {
-  console.log({
-    email: email.value,
-    password: password.value,
-  });
+  loading.value = true;
   const userData = await login(
     {
       email: email.value,
@@ -79,7 +80,11 @@ const handleLogin = async function () {
     client
   );
 
-  setUser(userData?.user.user_metadata.firstName);
+  if (userData) {
+    setUser(userData?.user.user_metadata.firstName);
+    closeModal();
+  }
+  loading.value = false;
 };
 </script>
 

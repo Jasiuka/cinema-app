@@ -1,5 +1,6 @@
 <template>
   <button
+    :disabled="disabled"
     :title="title"
     :type="type"
     role="button"
@@ -26,6 +27,11 @@ const props = defineProps({
     type: String,
     required: false,
   },
+  disabled: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   buttonStyle: {
     type: String as PropType<ButtonStyle>,
     required: false,
@@ -41,6 +47,8 @@ const btnStyle = computed(() => {
       return "inverted";
     case ButtonStyle.LINK:
       return "link";
+    case ButtonStyle.INHERITED:
+      return "inherited";
     default:
       return "regular";
   }
@@ -53,6 +61,9 @@ button {
   transition: var(--transition);
   border-radius: var(--border-radius);
   padding: calc(var(--pd-smallest) - 0.3rem) var(--pd-smallest);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-smallest);
 }
 
 button.regular {
@@ -61,7 +72,7 @@ button.regular {
   color: var(--cl-light);
 }
 
-button.regular:hover {
+button.regular:not(:disabled):hover {
   background-color: transparent;
   border-color: var(--cl-accent);
   color: var(--cl-dark);
@@ -75,7 +86,15 @@ button.link {
   transition: var(--transition);
 }
 
-button.link:hover {
+button.link:not(:disabled):hover {
   color: var(--cl-dark);
+}
+
+button.inherited {
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  border: none;
+  background-color: transparent;
 }
 </style>

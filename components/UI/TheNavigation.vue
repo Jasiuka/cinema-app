@@ -29,14 +29,20 @@
             {{ user }}
           </template>
           <template #list-items>
-            <li v-for="item in items">
+            <li class="dropdown__item" v-for="item in items">
               <NuxtLink v-if="item.type === 'link'" :to="item.link">{{
                 item.text
               }}</NuxtLink>
               <button v-else>{{ item.text }}</button>
             </li>
-            <li>
-              <button @click="handleLogout">Logout</button>
+            <li class="dropdown__item">
+              <Button
+                :button-style="ButtonStyle.INHERITED"
+                @click="handleLogout"
+                title="Logout"
+                type="button"
+                >Logout</Button
+              >
             </li>
           </template>
         </BaseDropdown>
@@ -49,7 +55,7 @@
 import { useModalStore } from "../../stores/modalStore";
 import { useAuthStore } from "#imports";
 import { logout } from "#imports";
-import type { DropdownList } from "~/types";
+import { ButtonStyle, type DropdownList } from "~/types";
 const { openModal } = useModalStore();
 const { setUser } = useAuthStore();
 const { user } = storeToRefs(useAuthStore());

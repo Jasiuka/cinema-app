@@ -19,8 +19,10 @@
         title="Login"
         :button-style="ButtonStyle.REGULAR"
         role="button"
-        >Signup</Button
-      >
+        :disabled="loading"
+        >Signup
+        <TheLoader v-if="loading" />
+      </Button>
     </template>
   </BaseForm>
 </template>
@@ -30,7 +32,9 @@ import { ButtonStyle, type User } from "~/types";
 import { signup } from "#imports";
 
 const client = useSupabaseClient();
+const loading = ref(false);
 const handleSignup = async (event: SubmitEvent) => {
+  loading.value = true;
   const form = event.target as HTMLFormElement;
 
   const user: User = {
@@ -46,6 +50,7 @@ const handleSignup = async (event: SubmitEvent) => {
   };
 
   await signup(user, client);
+  loading.value = false;
 };
 </script>
 

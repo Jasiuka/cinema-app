@@ -18,6 +18,7 @@ export enum ButtonStyle {
   REGULAR = "regular",
   INVERTED = "inverted",
   LINK = "link",
+  INHERITED = "inherited",
 }
 
 export type InputEmit = {

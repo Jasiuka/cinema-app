@@ -94,6 +94,11 @@ body {
 }
 
 
+button:disabled {
+  background-color: grey !important;
+}
+
+
 
 
 /* HELPER CLASSES */
@@ -115,5 +120,9 @@ body {
 
 .border-radius {
   border-radius: 6px;
+}
+
+.bold {
+  font-weight: 600;
 }
 </style>
