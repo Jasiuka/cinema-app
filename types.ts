@@ -36,3 +36,8 @@ export enum ModalComponents {
   AUTH = "auth",
   DELETE_ACCOUNT = "delete-account",
 }
+
+export type StoredUser = {
+  email: string;
+  name: string;
+};

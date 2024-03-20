@@ -17,7 +17,7 @@
       <li class="navigation__item">
         <NuxtLink to="/" class="navigation__link">Link</NuxtLink>
       </li>
-      <li v-if="!user">
+      <li v-if="!user.name">
         <button
           class="naivgation__button"
           @click="openModal(ModalComponents.AUTH)"
@@ -60,13 +60,13 @@ import { useAuthStore } from "#imports";
 import { logout } from "#imports";
 import { ButtonStyle, ModalComponents, type DropdownList } from "~/types";
 const { openModal } = useModalStore();
-const { setUser } = useAuthStore();
+const { unsetUser } = useAuthStore();
 const { user } = storeToRefs(useAuthStore());
 const client = useSupabaseClient();
 
 const handleLogout = async () => {
   await logout(client);
-  setUser("");
+  unsetUser();
 };
 
 const items: DropdownList = [

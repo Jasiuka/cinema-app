@@ -81,7 +81,15 @@ const handleLogin = async function () {
   );
 
   if (userData) {
-    setUser(userData?.user.user_metadata.firstName);
+    const email = userData.user.email !== undefined ? userData.user.email : "";
+    const name =
+      userData.user.user_metadata.firstName !== undefined
+        ? userData.user.user_metadata.firstName
+        : "";
+    setUser({
+      email,
+      name,
+    });
     closeModal();
   }
   loading.value = false;
