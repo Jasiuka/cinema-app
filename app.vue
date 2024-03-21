@@ -1,5 +1,6 @@
 <template>
   <div>
+    <NotificationsList />
     <TheModal>
       <component :is="modalComponent"></component>
     </TheModal>
@@ -35,6 +36,10 @@ const modalComponent = computed(() => {
   --cl-black: black;
   --cl-grey: #868e96;
   --cl-white: white;
+  --cl-red: #ff6b6b;
+  --cl-red-light:#ff8787;
+  --cl-green:#51cf66;
+  --cl-green-light: #8ce99a;
 
   /* PADDING */
   --pd-smallest: clamp(0.2rem, 1dvw, 0.5rem);
@@ -58,7 +63,7 @@ const modalComponent = computed(() => {
 
   /* OTHER */
   --border-radius: 6px;
-  --transition: all 0.4s ease;
+  --transition: all 0.3s ease;
   --shadow: box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.1);
   --max-width: 100rem;
 }

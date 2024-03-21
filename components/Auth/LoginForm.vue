@@ -70,6 +70,7 @@ const handleInputChange = (input: InputEmit) => {
 
 const email = ref("");
 const password = ref("");
+const { createNotification } = useNotificationStore();
 const handleLogin = async function () {
   loading.value = true;
   const userData = await login(

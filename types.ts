@@ -41,3 +41,14 @@ export type StoredUser = {
   email: string;
   name: string;
 };
+
+export type Notififaction = {
+  id: string;
+  text: string;
+  type: NotificationType;
+};
+
+export enum NotificationType {
+  ERROR = "error",
+  SUCCESS = "success",
+}

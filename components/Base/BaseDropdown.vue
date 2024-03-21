@@ -9,20 +9,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import type { DropdownList } from "~/types";
-defineProps({
-  buttonText: {
-    type: String,
-    required: true,
-  },
-  items: {
-    type: Array as () => DropdownList,
-    required: true,
-  },
-});
-</script>
-
 <style scoped>
 .dropdown:hover > .dropdown__list {
   opacity: 1;

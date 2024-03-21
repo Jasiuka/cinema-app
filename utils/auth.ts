@@ -27,7 +27,9 @@ export async function login(
       return;
     }
     return data;
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function forgotPassword(email: string, client: SupabaseClient) {
