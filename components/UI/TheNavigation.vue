@@ -29,7 +29,7 @@
         <BaseDropdown>
           <template #display>
             <Icon size="1.5rem" name="material-symbols:person" />
-            {{ user }}
+            {{ user.name }}
           </template>
           <template #list-items>
             <li class="dropdown__item" v-for="item in items">

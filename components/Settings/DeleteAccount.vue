@@ -19,10 +19,6 @@ import { ModalComponents } from "~/types";
 
 const open = ref(false);
 const { openModal } = useModalStore();
-
-const handleOpenClick = () => {
-  open.value = !open.value;
-};
 </script>
 
 <style scoped>

@@ -12,7 +12,7 @@
       </p>
     </template>
     <template #content-hidden>
-      <BaseForm :in-row="true">
+      <BaseForm @submit.prevent="handleChangeEmail($event)" :in-row="true">
         <template #form-content>
           <FormControl
             label="New email address"
@@ -41,6 +41,13 @@ defineProps({
     required: true,
   },
 });
+const client = useSupabaseClient();
+const handleChangeEmail = async (event: SubmitEvent) => {
+  const form = event.target as HTMLFormElement;
+  const newEmail = form["new-email"].value;
+  const response = await changeEmail(newEmail, client);
+  console.log(response);
+};
 </script>
 
 <style></style>

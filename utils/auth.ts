@@ -41,3 +41,34 @@ export async function logout(client: SupabaseClient) {
     console.log("Logged out successfuly");
   } catch (error) {}
 }
+
+export async function changeEmail(email: string, client: SupabaseClient) {
+  try {
+    const { data, error } = await client.auth.updateUser({ email: email });
+    if (!error) {
+      return data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function changePassword(
+  current_password: string,
+  new_password: string,
+  client: SupabaseClient
+) {
+  try {
+    const currentPasswordVerified = await client.rpc("verify_user_password", {
+      password: current_password,
+    });
+    if (currentPasswordVerified.data) {
+      const updateResponse = await client.auth.updateUser({
+        password: new_password,
+      });
+    }
+    return currentPasswordVerified;
+  } catch (error) {
+    console.log(error);
+  }
+}

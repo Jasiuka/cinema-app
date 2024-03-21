@@ -22,7 +22,6 @@
 </template>
 
 <script setup lang="ts">
-import type { SupabaseAuthClient } from "@supabase/supabase-js/dist/module/lib/SupabaseAuthClient";
 import { ButtonStyle, type InputEmit } from "~/types";
 const client = useSupabaseClient();
 const { getEmail } = useAuthStore();

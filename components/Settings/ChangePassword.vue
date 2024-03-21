@@ -5,7 +5,7 @@
     </template>
     <template #content> </template>
     <template #content-hidden>
-      <BaseForm :in-row="true">
+      <BaseForm @submit.prevent="handlePasswordChange($event)" :in-row="true">
         <template #form-content>
           <FormControl
             label="New password"
@@ -15,7 +15,7 @@
           <FormControl
             label="Current password"
             type="password"
-            name="new-password-confirm"
+            name="current-password"
           />
         </template>
         <template #submit>
@@ -33,10 +33,13 @@
 
 <script setup lang="ts">
 import { ButtonStyle } from "~/types";
-const open = ref(false);
-
-const handleOpenClick = () => {
-  open.value = !open.value;
+const client = useSupabaseClient();
+const handlePasswordChange = async (event: SubmitEvent) => {
+  const form = event.target as HTMLFormElement;
+  const newPassword = form["new-password"].value;
+  const currentPassword = form["current-password"].value;
+  const response = await changePassword(currentPassword, newPassword, client);
+  console.log(response);
 };
 </script>
 
