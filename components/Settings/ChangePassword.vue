@@ -33,13 +33,12 @@
 
 <script setup lang="ts">
 import { ButtonStyle } from "~/types";
-const client = useSupabaseClient();
+const { changePassword } = useAuthStore();
 const handlePasswordChange = async (event: SubmitEvent) => {
   const form = event.target as HTMLFormElement;
   const newPassword = form["new-password"].value;
   const currentPassword = form["current-password"].value;
-  const response = await changePassword(currentPassword, newPassword, client);
-  console.log(response);
+  await changePassword(currentPassword, newPassword);
 };
 </script>
 

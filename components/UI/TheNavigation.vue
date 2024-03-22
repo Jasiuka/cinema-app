@@ -59,16 +59,13 @@
 <script setup lang="ts">
 import { useModalStore } from "../../stores/modalStore";
 import { useAuthStore } from "#imports";
-import { logout } from "#imports";
 import { ButtonStyle, ModalComponents, type DropdownList } from "~/types";
 const { openModal } = useModalStore();
-const { unsetUser } = useAuthStore();
+const { logout } = useAuthStore();
 const { user } = storeToRefs(useAuthStore());
-const client = useSupabaseClient();
 
 const handleLogout = async () => {
-  await logout(client);
-  unsetUser();
+  await logout();
 };
 
 const items: DropdownList = [

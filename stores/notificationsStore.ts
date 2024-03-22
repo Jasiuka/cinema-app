@@ -8,11 +8,25 @@ export const useNotificationStore = defineStore("notifications", {
       notificationText: string,
       notificationType: NotificationType
     ) {
+      let notificationString = notificationText;
+      // Check if notificationText has 'Error:' inside
+      const errorAdded = notificationText.includes("Error:");
+
+      // Remove 'Error:'
+      if (errorAdded) {
+        notificationString.split(":")[1];
+      }
+
+      // If type error add prefix "There was an error"
+      if (notificationType === "error") {
+        notificationString = `There was an error, ${notificationString.toLowerCase()}`;
+      }
+
       // Create id for notification
       const notificationId = Date.now().toLocaleString();
       const notification: Notififaction = {
         id: notificationId,
-        text: notificationText,
+        text: notificationString,
         type: notificationType,
       };
       this.addNotififaction(notification);

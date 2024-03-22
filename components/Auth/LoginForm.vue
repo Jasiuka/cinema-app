@@ -41,11 +41,9 @@
 </template>
 
 <script setup lang="ts">
-import { login } from "#imports";
 import { ButtonStyle, type InputEmit } from "~/types";
 
-const { setUser } = useAuthStore();
-const client = useSupabaseClient();
+const { login } = useAuthStore();
 const { closeModal } = useModalStore();
 const loading = ref(false);
 
@@ -70,29 +68,14 @@ const handleInputChange = (input: InputEmit) => {
 
 const email = ref("");
 const password = ref("");
-const { createNotification } = useNotificationStore();
 const handleLogin = async function () {
   loading.value = true;
-  const userData = await login(
-    {
-      email: email.value,
-      password: password.value,
-    },
-    client
-  );
+  const isSuccess = await login({
+    email: email.value,
+    password: password.value,
+  });
+  if (isSuccess) closeModal();
 
-  if (userData) {
-    const email = userData.user.email !== undefined ? userData.user.email : "";
-    const name =
-      userData.user.user_metadata.firstName !== undefined
-        ? userData.user.user_metadata.firstName
-        : "";
-    setUser({
-      email,
-      name,
-    });
-    closeModal();
-  }
   loading.value = false;
 };
 </script>

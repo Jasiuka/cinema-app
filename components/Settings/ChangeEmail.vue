@@ -41,12 +41,11 @@ defineProps({
     required: true,
   },
 });
-const client = useSupabaseClient();
+const { changeEmail } = useAuthStore();
 const handleChangeEmail = async (event: SubmitEvent) => {
   const form = event.target as HTMLFormElement;
   const newEmail = form["new-email"].value;
-  const response = await changeEmail(newEmail, client);
-  console.log(response);
+  await changeEmail(newEmail);
 };
 </script>
 

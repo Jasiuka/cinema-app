@@ -4,6 +4,9 @@
       label
     }}</label>
     <input v-model.trim="inputVal" :type="type" :name="name" :id="name" />
+    <div v-if="tooltip" class="form-control__tooltip">
+      <p>{{ tooltip }}</p>
+    </div>
   </div>
 </template>
 
@@ -25,6 +28,11 @@ const props = defineProps({
   },
   movedLabel: {
     type: Boolean,
+    required: false,
+    default: false,
+  },
+  tooltip: {
+    type: String,
     required: false,
     default: false,
   },
@@ -70,5 +78,18 @@ input {
 input:focus {
   border-color: var(--cl-accent);
   background-color: rgb(249, 249, 249);
+}
+
+.form-control__tooltip {
+  max-height: 0;
+  overflow: hidden;
+  font-size: calc(var(--fs-smallest) - 0.4rem);
+  transition: all 0.5s ease;
+  color: var(--cl-red);
+}
+
+input:focus + .form-control__tooltip {
+  min-height: 0.5rem;
+  max-height: 10rem;
 }
 </style>

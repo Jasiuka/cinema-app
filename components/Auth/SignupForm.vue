@@ -10,7 +10,12 @@
         type="date"
       />
       <FormControl name="email" label="Email" type="email" />
-      <FormControl name="password" label="Password" type="password" />
+      <FormControl
+        name="password"
+        label="Password"
+        type="password"
+        tooltip="Password must be at least 6 characters long, including uppercase, lowercase letters, a number, and a symbol."
+      />
       <FormControl name="confirm" label="Confirm password" type="password" />
     </template>
     <template #submit>
@@ -29,9 +34,9 @@
 
 <script setup lang="ts">
 import { ButtonStyle, type User } from "~/types";
-import { signup } from "#imports";
 
-const client = useSupabaseClient();
+const { signUp } = useAuthStore();
+
 const loading = ref(false);
 const handleSignup = async (event: SubmitEvent) => {
   loading.value = true;
@@ -49,7 +54,7 @@ const handleSignup = async (event: SubmitEvent) => {
     },
   };
 
-  await signup(user, client);
+  await signUp(user);
   loading.value = false;
 };
 </script>
