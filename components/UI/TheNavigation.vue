@@ -2,7 +2,7 @@
   <nav class="navigation">
     <div class="navigation__container">
       <div class="navigation__logo">LOGO</div>
-      <ul class="navigation__list">
+      <ul class="navigation__list navigation__list-left">
         <li class="navigation__item">
           <NuxtLink to="/" class="navigation__link">Main</NuxtLink>
         </li>
@@ -18,6 +18,8 @@
         <li class="navigation__item">
           <NuxtLink to="/" class="navigation__link">Link</NuxtLink>
         </li>
+      </ul>
+      <ul class="navigation__list navigation__list-right">
         <li v-if="!user.name" class="navigation__item">
           <button
             class="naivgation__button"
@@ -90,26 +92,27 @@ const items: DropdownList = [
 }
 
 .navigation__container {
-  max-width: var(--max-width);
   min-width: var(--max-width);
+  /* min-width: 100%; */
   display: flex;
   margin: 0 auto;
   gap: calc(var(--sp-largest) * 2);
+  justify-content: space-between;
 }
 
 .navigation__list {
   gap: var(--sp-medium);
   z-index: 5;
   min-height: 100%;
-  width: 100%;
 }
 
 .navigation__item {
   min-height: 100%;
 }
 
-.navigation__item:last-child {
-  margin-right: 0;
-  margin-left: auto;
+@media only screen and (max-width: 103rem) {
+  .navigation__container {
+    min-width: 100%;
+  }
 }
 </style>

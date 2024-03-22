@@ -39,7 +39,7 @@ defineProps({
 
 <style scoped>
 .header {
-  min-width: 100%;
+  min-width: 100dvw;
   display: flex;
   justify-content: center;
 }

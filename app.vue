@@ -75,6 +75,10 @@ h3 {
   padding: 0;
 }
 
+*::after, *::before, * {
+  box-sizing: border-box;
+}
+
 ul,
 ol {
   list-style: none;

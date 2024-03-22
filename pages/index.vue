@@ -239,16 +239,6 @@ section {
   padding: var(--pd-small);
 }
 
-.primary__card-list li:nth-child(even) :deep(.primary__card-main) {
-  /* clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 99%); */
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 6% 100%);
-}
-
-.primary__card-list li:nth-child(odd) :deep(.primary__card-main) {
-  /* clip-path: polygon(0 0, 94% 0, 100% 100%, 6% 100%); */
-  clip-path: polygon(6% 0, 100% 0, 100% 100%, 0 99%);
-}
-
 .primary__card-image {
   max-height: 10%;
   min-width: 30%;
